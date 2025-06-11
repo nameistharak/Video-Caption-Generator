@@ -1,0 +1,8 @@
+Flask
+torch
+transformers
+sentence-transformers
+opencv-python
+Pillow
+protobuf
+hf_xet
