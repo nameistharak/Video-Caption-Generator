@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Video Caption Generator</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #f4f4f4;
+      padding: 30px;
+    }
+    .container {
+      background: white;
+      padding: 40px;
+      border-radius: 10px;
+      max-width: 700px;
+      margin: auto;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    input[type="file"] {
+      margin-top: 15px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    video {
+      width: 100%;
+      margin-top: 20px;
+    }
+    .description {
+      margin-top: 30px;
+      background: #eef;
+      padding: 15px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Upload a Video</h2>
+    <form method="POST" enctype="multipart/form-data">
+      <input type="file" name="video" accept="video/*" required>
+      <br>
+      <button type="submit">Generate Description</button>
+    </form>
+
+    {% if video_filename %}
+    <video controls>
+      <source src="{{ url_for('static', filename='uploads/' + video_filename) }}" type="video/mp4">
+    </video>
+    {% endif %}
+
+    {% if description %}
+    <div class="description">
+      <h3>Generated Description:</h3>
+      <p>{{ description }}</p>
+    </div>
+    {% endif %}
+  </div>
+</body>
+</html>
